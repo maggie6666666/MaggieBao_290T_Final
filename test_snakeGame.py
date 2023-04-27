@@ -7,3 +7,6 @@ def test_capital_case():
 
 def test_square():
     assert square(5) == 25
+
+def test_square():
+    assert square(2) == 4
