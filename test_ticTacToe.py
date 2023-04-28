@@ -97,3 +97,11 @@ def test_shouldReturnTieifNonehasWon():
             result = play()
             assert result == 'Tie'
 
+def test_threeAttemptsToMarkAMakredTileShouldPromptErrorMessage():
+    inputs = ['1', '1', '1', '1']
+    input_mock = StringIO('\n'.join(inputs))
+    with patch('sys.stdin', input_mock):
+        try:
+            play()
+        except ValueError as e:
+            assert str(e) == "Too many invalid choices."
