@@ -1,6 +1,7 @@
 from ticTacToe import *
 from io import StringIO
 from unittest.mock import patch
+import pytest
 
 def test_InitialGameBoardshouldBePrintedCorrectly(capfd):
     inital_gameBoard = [[1,2,3], [4,5,6], [7,8,9]]
@@ -19,7 +20,19 @@ def test_markAnEmptyTileWithOShouldUpdateBoard():
     mark_tile(game_board, 2, 'O')
     assert game_board == [[1, 'O', 3], [4, 5, 6], [7, 8, 9]]
 
-def test_markAnEmptyTileWithUnknownMarkShouldNotUpdateBoard():
+def test_markAnEmptyTileWithUnknownMarkShouldNotUpdateBoard(capfd):
     game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     mark_tile(game_board, 3, '*')
+    out, err = capfd.readouterr()
+    CorrectMessage = "Invalid Mark. Please try again.\n"
     assert game_board == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    assert out == CorrectMessage
+
+def test_markAnEmptyTileWithUnknownMarkShouldPromptMessage(capfd):
+    game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    mark_tile(game_board, 3, '*')
+    out, err = capfd.readouterr()
+    CorrectMessage = "Invalid Mark. Please try again.\n"
+    assert out == CorrectMessage
+
+

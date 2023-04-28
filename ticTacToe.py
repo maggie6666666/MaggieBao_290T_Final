@@ -1,3 +1,4 @@
+# Understands the rules of TicTacToe
 import random
 
 POSSIBLE_NUMBERS = [1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -22,7 +23,7 @@ def mark_tile(game_board, tile_number, player_mark):
                 if tile == tile_number:
                     row[i] = player_mark
     else:
-        print("Invalid Mark")
+        print("Invalid Mark. Please try again.")
 
 def play():
     pass
