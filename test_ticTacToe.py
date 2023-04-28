@@ -58,6 +58,9 @@ def test_lessThanThreeInvalidInputCanBeCorrected():
     with patch('sys.stdin', StringIO('0\n2\n')):
         assert get_player_choice([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 2
 
+def test_aVerticalWinningRowShouldBeIdentified():
+    game_board = [['O', 'X', 'X'], ['X', 'O', 'X'], ['O', 'O', 'X']]
+    assert check_for_winner(game_board) == 'X'
 
 
 

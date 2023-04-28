@@ -38,7 +38,18 @@ def get_player_choice(possible_numbers):
     return player_choice
 
 def check_for_winner(game_board):
-    pass
+    """Checks if there is a winner, and returns their mark if there is."""
+    rows = (
+        game_board
+        + [list(x) for x in zip(*game_board)]
+        + [[game_board[i][i] for i in range(3)], [game_board[i][2 - i] for i in range(3)]]
+    )
+    for row in rows:
+        if row == ["X", "X", "X"]:
+            return "X"
+        elif row == ["O", "O", "O"]:
+            return "O"
+    return None
 
 def play():
     pass
