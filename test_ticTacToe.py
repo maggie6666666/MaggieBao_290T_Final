@@ -87,3 +87,13 @@ def test_shouldReturnOifOhasWon():
         with patch('sys.stdout', output_mock):
             result = play()
             assert result == 'O'
+
+def test_shouldReturnTieifNonehasWon():
+    inputs = ['1', '2', '3', '5', '4', '6', '8', '7', '9']
+    input_mock = StringIO('\n'.join(inputs))
+    with patch('sys.stdin', input_mock):
+        output_mock = StringIO()
+        with patch('sys.stdout', output_mock):
+            result = play()
+            assert result == 'Tie'
+
