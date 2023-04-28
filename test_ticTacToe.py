@@ -62,5 +62,9 @@ def test_aVerticalWinningRowShouldBeIdentified():
     game_board = [['O', 'X', 'X'], ['X', 'O', 'X'], ['O', 'O', 'X']]
     assert check_for_winner(game_board) == 'X'
 
+def test_aHorizontalWinningRowShouldBeIdentified():
+    game_board = [['O', 'O', 'O'], ['X', 'O', 'X'], ['X', 'X', 'O']]
+    assert check_for_winner(game_board) == 'O'
+
 
 
