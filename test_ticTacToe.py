@@ -35,4 +35,9 @@ def test_markAnEmptyTileWithUnknownMarkShouldPromptMessage(capfd):
     CorrectMessage = "Invalid Mark. Please try again.\n"
     assert out == CorrectMessage
 
+def test_markInvalidTileShouldNotUpdateBoard():
+    game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    mark_tile(game_board, 10, 'X')
+    assert game_board == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
 
