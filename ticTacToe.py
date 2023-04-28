@@ -25,11 +25,16 @@ def mark_tile(game_board, tile_number, player_mark):
         print("Invalid Mark. Please try again.")
 
 def get_player_choice(possible_numbers):
+    """Gets a valid tile choice from the player."""
     player_choice = None
-    while player_choice not in possible_numbers:
+    attempts = 0
+    while player_choice not in possible_numbers and attempts < 3:
         player_choice = int(input("Choose a tile (1-9): "))
         if player_choice not in possible_numbers:
             print("Invalid choice. Please try again.")
+            attempts += 1
+    if attempts == 3:
+        raise ValueError("Too many invalid choices.")
     return player_choice
 
 def check_for_winner(game_board):
