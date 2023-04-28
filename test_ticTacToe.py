@@ -28,6 +28,7 @@ def test_markAnEmptyTileWithUnknownMarkShouldNotUpdateBoard(capfd):
     assert game_board == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     assert out == CorrectMessage
 
+# This edge case will alsp be taken care of by play() function
 def test_markAnEmptyTileWithUnknownMarkShouldPromptMessage(capfd):
     game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     mark_tile(game_board, 3, '*')
@@ -35,9 +36,13 @@ def test_markAnEmptyTileWithUnknownMarkShouldPromptMessage(capfd):
     CorrectMessage = "Invalid Mark. Please try again.\n"
     assert out == CorrectMessage
 
+# This edge case will alsp be taken care of by get_player_choice() function
 def test_markInvalidTileShouldNotUpdateBoard():
     game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
     mark_tile(game_board, 10, 'X')
     assert game_board == [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
+def test_validInputShouldBeProcessed():
+    with patch('sys.stdin', StringIO('3\n')):
+        assert get_player_choice([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 3
 

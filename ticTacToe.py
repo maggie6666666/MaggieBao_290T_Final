@@ -16,7 +16,6 @@ def print_game_board(game_board):
     
 
 def mark_tile(game_board, tile_number, player_mark):
-    """Updates the board state with the player's tile choice."""
     if player_mark in VALID_MARK:
         for row in game_board:
             for i, tile in enumerate(row):
@@ -24,6 +23,17 @@ def mark_tile(game_board, tile_number, player_mark):
                     row[i] = player_mark
     else:
         print("Invalid Mark. Please try again.")
+
+def get_player_choice(possible_numbers):
+    player_choice = None
+    while player_choice not in possible_numbers:
+        player_choice = int(input("Choose a tile (1-9): "))
+        if player_choice not in possible_numbers:
+            print("Invalid choice. Please try again.")
+    return player_choice
+
+def check_for_winner(game_board):
+    pass
 
 def play():
     pass
