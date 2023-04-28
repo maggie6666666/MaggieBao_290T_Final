@@ -52,4 +52,30 @@ def check_for_winner(game_board):
     return None
 
 def play():
-    pass
+    """Runs a game of Tic Tac Toe."""
+    game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    turn_counter = 0
+    possible_numbers = POSSIBLE_NUMBERS.copy()
+
+    print("Welcome to Tic Tac Toe")
+    print("----------------------")
+    while True:
+        print_game_board(game_board)
+        if turn_counter % 2 == 0:
+            player_mark = "X"
+        else:
+            player_mark = "O"
+        print(f"Player {player_mark}, it's your turn.")
+        player_choice = get_player_choice(possible_numbers)
+        possible_numbers.remove(player_choice)
+        mark_tile(game_board, player_choice, player_mark)
+        winner = check_for_winner(game_board)
+        if winner is not None:
+            print_game_board(game_board)
+            print(f"{winner} has won!")
+            return winner
+        turn_counter += 1
+        if turn_counter == 9:
+            print_game_board(game_board)
+            print("It's a tie!")
+            return "Tie"

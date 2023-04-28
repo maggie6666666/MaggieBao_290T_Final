@@ -69,3 +69,12 @@ def test_aHorizontalWinningRowShouldBeIdentified():
 def test_aDiagonalWinningRowShouldBeIdentified():
     game_board = [['O', 'O', 'X'], ['X', 'O', 'X'], ['X', 'X', 'O']]
     assert check_for_winner(game_board) == 'O'
+
+def test_shouldReturnXifXhasWon():
+    inputs = ['1', '5', '2', '6', '3']
+    input_mock = StringIO('\n'.join(inputs))
+    with patch('sys.stdin', input_mock):
+        output_mock = StringIO()
+        with patch('sys.stdout', output_mock):
+            result = play()
+            assert result == 'X'
