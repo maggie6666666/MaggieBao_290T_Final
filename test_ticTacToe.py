@@ -14,3 +14,7 @@ def test_markAnEmptyTileWithXShouldUpdateBoard():
     mark_tile(game_board, 5, 'X')
     assert game_board == [[1, 2, 3], [4, 'X', 6], [7, 8, 9]]
 
+def test_markAnEmptyTileWithOShouldUpdateBoard():
+    game_board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    mark_tile(game_board, 2, 'O')
+    assert game_board == [[1, 'O', 3], [4, 5, 6], [7, 8, 9]]
