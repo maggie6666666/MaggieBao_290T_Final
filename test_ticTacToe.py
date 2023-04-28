@@ -78,3 +78,12 @@ def test_shouldReturnXifXhasWon():
         with patch('sys.stdout', output_mock):
             result = play()
             assert result == 'X'
+
+def test_shouldReturnOifOhasWon():
+    inputs = ['5', '1', '6', '2', '8', '3']
+    input_mock = StringIO('\n'.join(inputs))
+    with patch('sys.stdin', input_mock):
+        output_mock = StringIO()
+        with patch('sys.stdout', output_mock):
+            result = play()
+            assert result == 'O'
