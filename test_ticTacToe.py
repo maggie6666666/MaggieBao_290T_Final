@@ -47,12 +47,16 @@ def test_validInputShouldBeProcessed():
         assert get_player_choice([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 3
 
 
-def test_ThreeInvalidInputShouldPromptErrorMessage():
+def test_threeInvalidInputShouldPromptErrorMessage():
     with patch('sys.stdin', StringIO('0\n10\n11\n')):
         try:
             get_player_choice([1, 2, 3, 4, 5, 6, 7, 8, 9])
         except ValueError as e:
             assert str(e) == "Too many invalid choices."
+
+def test_lessThanThreeInvalidInputCanBeCorrected():
+    with patch('sys.stdin', StringIO('0\n2\n')):
+        assert get_player_choice([1, 2, 3, 4, 5, 6, 7, 8, 9]) == 2
 
 
 
