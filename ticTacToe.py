@@ -19,3 +19,6 @@ def mark_tile(game_board, tile_number, player_mark):
         for i, tile in enumerate(row):
             if tile == tile_number:
                 row[i] = player_mark
+
+def play():
+    pass
